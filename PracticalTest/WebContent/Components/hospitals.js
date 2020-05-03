@@ -5,7 +5,7 @@ $(document).ready(function()
 	$("#alertError").hide();
 });
 
-//SAVE ============================================
+//Save inserted and updated data
 $(document).on("click", "#btnSave", function(event)
 {
 	
@@ -71,7 +71,7 @@ function onHospitalSaveComplete(response, status)
 }
 
 
-	//REMOVE==========================================
+	//Delete hospital
 	$(document).on("click", ".btnRemove", function(event)
 			{
 			 $.ajax(
@@ -114,7 +114,7 @@ function onHospitalSaveComplete(response, status)
 		}
 	}
 	
-	//UPDATE==========================================
+	//Update hospital
 	$(document).on("click", ".btnUpdate", function(event)
 	{
 		$("#hidHospitalIDSave").val($(this).closest("tr").find('#hidHospitalIDUpdate').val());
@@ -130,7 +130,7 @@ function onHospitalSaveComplete(response, status)
 	}); 
 	
 
-	//CLIENT-MODEL================================================================
+	//Validation
 	function validateHospitalForm()
 	{
 		// CODE
@@ -138,25 +138,41 @@ function onHospitalSaveComplete(response, status)
 		{
 			return "Insert Hospital Name.";
 		}
+		
 		// NAME
 		if ($("#type").val().trim() == "")
 		{
 			return "Insert Hopsital Type.";
 		}
+		
 		// DESCRIPTION------------------------
 		if ($("#description").val().trim() == "")
 		{
 			return "Insert Hospital Description.";
 		}
+		
 		// PHONE NUMBER------------------------
+		var phoneRegEx = /^\d{10}$/;
+		var tenmPhone = $("#phoneNo").val().trim(); 
+		
 		if ($("#phoneNo").val().trim() == "")
 		{
 			return "Insert Phone Number.";
 		}
+		if(!phoneRegEx.test(tenmPhone)){
+			return "Enter Valid phone number";
+		}
+		
 		// EMAIL------------------------
-		if ($("#email").val().trim() == "")
+		var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+		var tmpEmail = $("#email").val().trim();
+		
+		if ($("#email").val().trim() == ""  )
 		{
-			return "Insert email";
+			return "Insert Email Address";
+		}
+		if(!emailPattern.test(tmpEmail)){
+			return "Enter Valid email";
 		}
 		
 		// CODE------------------------
@@ -164,21 +180,25 @@ function onHospitalSaveComplete(response, status)
 		{
 			return "Insert Address Code.";
 		}
+		
 		// CITY------------------------
 		if ($("#city").val().trim() == "")
 		{
 			return "Insert City.";
 		}
+		
 		// STATE------------------------
 		if ($("#state").val().trim() == "")
 		{
 			return "Insert State.";
 		}
+		
 		// HOSPITAL FEE-------------------------------
 		if ($("#hospitalFee").val().trim() == "")
 		{
 			return "Insert Hospital Fee.";
 		}
+		
 		// is numerical value
 		var tmpPrice = $("#hospitalFee").val().trim();
 		if (!$.isNumeric(tmpPrice))
