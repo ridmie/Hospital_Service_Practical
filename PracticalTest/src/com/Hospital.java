@@ -32,7 +32,7 @@ public class Hospital {
 	}
 
 	//For Read Hospitals from Database
-	public String readItems() 
+	public String readHospitals() 
 	{
 			String output= "";
 			
@@ -136,7 +136,7 @@ public class Hospital {
 				preparedStmt.execute();
 				con.close();
 				
-				String newItems = readItems();
+				String newItems = readHospitals();
 				output = "{\"status\":\"success\", \"data\": \"" + newItems + "\"}";
 			}catch (Exception e) {
 				output = "{\"status\":\"error\", \"data\": \"Error while inserting the item.\"}";
@@ -148,7 +148,7 @@ public class Hospital {
 		}
 		
 	//For Update Hospital Details
-	public String updateItem(String hospitalID,String name, String type, String description, String phoneNo, String email, String code, String city, String state, String hospitalFee)
+	public String updateHospital(String hospitalID,String name, String type, String description, String phoneNo, String email, String code, String city, String state, String hospitalFee)
 		{
 			
 			String output = "";
@@ -183,7 +183,7 @@ public class Hospital {
 				preparedStmt.execute();
 				con.close();
 				
-				String newItems = readItems();
+				String newItems = readHospitals();
 				output = "{\"status\":\"success\", \"data\": \"" +
 				newItems + "\"}";
 			
@@ -219,7 +219,7 @@ public class Hospital {
 			preparedStmt.execute();
 			con.close();
 			
-			String newItems = readItems();
+			String newItems = readHospitals();
 			output = "{\"status\":\"success\", \"data\": \"" + 
 			newItems + "\"}";
 			

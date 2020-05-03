@@ -45,7 +45,7 @@
 						<div id="divHospitalsGrid">
 							 <%
 							 Hospital hospObj = new Hospital();
-							 out.print(hospObj.readItems());
+							 out.print(hospObj.readHospitals());
 							 %>
 						</div>
 				</div>

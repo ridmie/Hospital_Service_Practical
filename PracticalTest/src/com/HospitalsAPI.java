@@ -61,7 +61,7 @@ public class HospitalsAPI extends HttpServlet {
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Map paras = getParasMap(request);
-		String output = hospObj.updateItem(paras.get("hidHospitalIDSave").toString(),
+		String output = hospObj.updateHospital(paras.get("hidHospitalIDSave").toString(),
 				paras.get("name").toString(),
 				paras.get("type").toString(),
 				paras.get("description").toString(),
