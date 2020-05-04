@@ -130,7 +130,7 @@ function onHospitalSaveComplete(response, status)
 	}); 
 	
 
-	//Validation
+	//Validation for form
 	function validateHospitalForm()
 	{
 		// CODE
