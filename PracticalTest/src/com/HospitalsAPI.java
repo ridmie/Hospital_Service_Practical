@@ -62,14 +62,14 @@ public class HospitalsAPI extends HttpServlet {
 		// TODO Auto-generated method stub
 		Map paras = getParasMap(request);
 		String output = hospObj.updateHospital(paras.get("hidHospitalIDSave").toString(),
-				paras.get("name").toString(),
-				paras.get("type").toString(),
-				paras.get("description").toString(),
+				paras.get("name").toString().replace('+',' '),
+				paras.get("type").toString().replace('+',' '),
+				paras.get("description").toString().replace('+',' '),
 				paras.get("phoneNo").toString(),
-				paras.get("email").toString(),
-				paras.get("code").toString(),
-				paras.get("city").toString(),
-				paras.get("state").toString(),
+				paras.get("email").toString().replace('%','@'),
+				paras.get("code").toString().replace("%2F","/"),
+				paras.get("city").toString().replace('+',' '),
+				paras.get("state").toString().replace('+',' '),
 				paras.get("hospitalFee").toString());
 		
 		response.getWriter().write(output); 
